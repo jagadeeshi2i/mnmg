@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+  pytorch:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      args:
+        --accelerator: ddp
+        --max_epochs: 1
+        --checkpoint_dir: ./chk
+        --model_save_path: ./mdl
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #       - driver: nvidia
+    #         count: 1
+    #         capabilities: [gpu, utility]
