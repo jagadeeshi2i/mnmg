@@ -278,15 +278,14 @@ class BertDataModule(pl.LightningDataModule):
         td.AG_NEWS(
             root="data", split=("train", "test")
         )
-        extracted_files = os.listdir("data/AG_NEWS")
+        extracted_files = os.listdir("data")
 
         train_csv_path = None
         for fname in extracted_files:
             if fname.endswith("train.csv"):
                 train_csv_path = os.path.join(
-                    os.getcwd(), "data/AG_NEWS", fname
+                    os.getcwd(), "data", fname
                 )
-        print(">>>>>>>>>>",train_csv_path)
         df = pd.read_csv(train_csv_path)
 
         df.columns = [
@@ -631,12 +630,12 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--checkpoint_dir",
-        default="/workspace/checkpoint/",
+        default="/home/user/checkpoint/",
         help="Path of checkpoint directory",
     )
     parser.add_argument(
         "--model_save_path",
-        default="/workspace/model",
+        default="/home/user/model",
         help="Path to model file",
     )
 
@@ -735,15 +734,14 @@ if __name__ == "__main__":
         td.AG_NEWS(
             root="data", split=("train", "test")
         )
-        extracted_files = os.listdir("data/AG_NEWS")
+        extracted_files = os.listdir("data")
 
         train_csv_path = None
         for fname in extracted_files:
             if fname.endswith("train.csv"):
                 train_csv_path = os.path.join(
-                    os.getcwd(), "data/AG_NEWS", fname
+                    os.getcwd(), "data", fname
                 )
-        print(">>>>>>>>>>",train_csv_path)
         df = pd.read_csv(train_csv_path)
 
         df.columns = [
@@ -1088,12 +1086,12 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--checkpoint_dir",
-        default="/workspace/checkpoint/",
+        default="/home/user/checkpoint/",
         help="Path of checkpoint directory",
     )
     parser.add_argument(
         "--model_save_path",
-        default="/workspace/model",
+        default="/home/user/model",
         help="Path to model file",
     )
 
