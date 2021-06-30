@@ -11,9 +11,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# FROM pytorch/pytorch:1.8.1-cuda10.2-cudnn7-runtime
+FROM pytorch/pytorch:1.8.1-cuda10.2-cudnn7-runtime
 
-FROM pytorch/pytorch:latest
+# FROM pytorch/pytorch:latest
 
 RUN apt-get update && apt-get install -y git
 

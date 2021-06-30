@@ -5,26 +5,19 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    command: python bert.py --gpus 0 --accelerator ddp --max_epochs 1 --num_samples 100 --num_nodes 2
+    command: python bert.py --gpus 1 --accelerator ddp --max_epochs 1 --num_samples 100 --num_nodes 2
     environment:
       MASTER_ADDR: "172.16.0.2"
       MASTER_PORT: 24456
       WORLD_SIZE: 2
       NODE_RANK: 0
       LOCAL_RANK: 0
-    # deploy:
-    #   resources:
-    #     reservations:
-    #       devices:
-    #       - driver: nvidia
-    #         count: 4
-    #         capabilities: [gpu, utility]
     networks:
       pytorch:
         ipv4_address: 172.16.0.2
   worker:
     image: dist_bert:latest
-    command: python bert.py --gpus 0 --accelerator ddp --max_epochs 1 --num_samples 100 --num_nodes 2
+    command: python bert.py --gpus 1 --accelerator ddp --max_epochs 1 --num_samples 100 --num_nodes 2
     environment:
       MASTER_ADDR: "172.16.0.2"
       MASTER_PORT: 24456
@@ -33,13 +26,6 @@ services:
       LOCAL_RANK: 0
     depends_on:
       - master
-    # deploy:
-    #   resources:
-    #     reservations:
-    #       devices:
-    #       - driver: nvidia
-    #         count: 4
-    #         capabilities: [gpu, utility]
     networks:
       pytorch:
         ipv4_address: 172.16.0.3
