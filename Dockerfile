@@ -29,4 +29,3 @@ COPY --chown=user:user . .
 
 RUN pip install --user -r requirements.txt
 
-ENTRYPOINT ["python", "bert.py"]
