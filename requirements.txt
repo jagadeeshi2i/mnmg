@@ -2,4 +2,4 @@ transformers
 torchtext 
 pandas 
 sklearn
-git+https://github.com/PyTorchLightning/pytorch-lightning@master
+pytorch-lightning
